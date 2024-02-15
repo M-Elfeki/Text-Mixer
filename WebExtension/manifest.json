@@ -1,0 +1,31 @@
+{
+    "manifest_version": 3,
+    "name": "Text Mixer",
+    "version": "1.0",
+    "description": "Fine-Tuning Texts, Tweets & Email with AI-Powered Precision.",
+    "action": {
+      "default_popup": "index.html",
+      "default_icon": {
+        "16": "./assets/mixer.png",
+        "48": "./assets/mixer.png",
+        "128": "./assets/mixer.png"
+      }
+    },
+    "background": {
+      "service_worker": "background.js"
+    },
+    "permissions": [
+      "activeTab",
+      "scripting"
+    ],
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["script.js"]
+      }
+    ],
+    "host_permissions": [
+      "http://4.242.50.139:8000/*"
+    ]
+  }
+  
