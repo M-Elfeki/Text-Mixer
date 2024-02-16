@@ -1,36 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Text Mixer</title>
 </head>
 <body>
     <h1>Text Mixer</h1>
-    <input type="text" id="userInput" placeholder="Enter your text">
-    <button onclick="sendText()">Scramble Text</button>
+    <input type="text" id="textInput" placeholder="Enter your text">
+    <button onclick="sendText()">Mix Text</button>
     <div id="output"></div>
 
     <script>
         function sendText() {
-            var userInput = document.getElementById("userInput").value;
+            const textInput = document.getElementById('textInput').value;
             fetch('https://text-mixer.com/scramble', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ message: userInput })
+                body: JSON.stringify({ text: textInput })
             })
             .then(response => response.json())
             .then(data => {
-                document.getElementById("output").innerText = data.scrambledText;
+                document.getElementById('output').innerText = data.scrambledText;
             })
-            .catch(error => {
-                console.error('Error:', error);
-            });
+            .catch(error => console.error('Error:', error));
         }
     </script>
 </body>
+</html>
+
 </html>
 
 
