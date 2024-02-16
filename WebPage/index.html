@@ -3,6 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Mixer</title>
+</head>
+<body>
+    <h1>Text Mixer</h1>
+    <input type="text" id="userInput" placeholder="Enter your text">
+    <button onclick="sendText()">Scramble Text</button>
+    <div id="output"></div>
+
+    <script>
+        function sendText() {
+            var userInput = document.getElementById("userInput").value;
+            fetch('https://text-mixer.com/scramble', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message: userInput })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("output").innerText = data.scrambledText;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+</body>
+</html>
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test Detection and Rephrasing</title>
 </head>
 <body>
@@ -18,18 +55,5 @@
 
     <script src="script.js"></script>
 </body>
-</html>
-
-<!-- <!DOCTYPE html>
-<html>
-<head>
-    <title>Text Mixer</title>
-</head>
-<body>
-    <input type="text" id="userInput" placeholder="Enter text to scramble">
-    <button onclick="scrambleText()">Scramble</button>
-    <div id="scrambledOutput"></div>
-
-    <script src="script.js"></script>
-</body>
 </html> -->
+
