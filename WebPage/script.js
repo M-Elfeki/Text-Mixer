@@ -16,7 +16,7 @@
 
 
 // const url = 'http://192.168.0.22:5000/';
-const url = 'https://4.242.50.139:8000/';
+const url = 'http://4.242.50.139:8000/';
 // const url = 'https://server.text-mixer.com/:8000/';
 function detectDials() {
     const message = document.getElementById('message').value;
