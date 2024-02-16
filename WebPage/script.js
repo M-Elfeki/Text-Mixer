@@ -1,18 +1,18 @@
-function scrambleText() {
-    const inputText = document.getElementById('userInput').value;
-    fetch('https://text-mixer.com/api/scramble', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ text: inputText })
-    })
-    .then(response => response.json())
-    .then(data => {
-        document.getElementById('scrambledOutput').innerText = data.scrambled;
-    })
-    .catch(error => console.error('Error:', error));
-}
+// function scrambleText() {
+//     const inputText = document.getElementById('userInput').value;
+//     fetch('https://text-mixer.com/api/scramble', {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify({ text: inputText })
+//     })
+//     .then(response => response.json())
+//     .then(data => {
+//         document.getElementById('scrambledOutput').innerText = data.scrambled;
+//     })
+//     .catch(error => console.error('Error:', error));
+// }
 
 
 // // const url = 'http://192.168.0.22:5000/';
