@@ -1,34 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Text Mixer</title>
+  <title>Text Mixer</title>
 </head>
 <body>
-    <h1>Text Mixer</h1>
-    <input type="text" id="textInput" placeholder="Enter your text">
-    <button onclick="sendText()">Mix Text</button>
-    <div id="output"></div>
-
-    <script>
-        function sendText() {
-            const textInput = document.getElementById('textInput').value;
-            fetch('https://text-mixer.com/scramble', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ text: textInput })
-            })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('output').innerText = data.scrambledText;
-            })
-            .catch(error => console.error('Error:', error));
-        }
-    </script>
+  <h1>Text Mixer</h1>
+  <form action="https://text-mixer.com/scramble" method="POST">
+    <label for="text">Enter text to scramble:</label>
+    <input type="text" name="text" id="text">
+    <input type="submit" value="Scramble">
+  </form>
+  <div id="result"></div>
 </body>
-</html>
+<script>
+  const form = document.querySelector('form');
 
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const text = e.target.querySelector('input[name="text"]').value;
+
+    const response = await fetch('/scramble', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: `text=${text}`
+    });
+
+    const scrambledText = await response.text();
+
+    document.querySelector('#result').innerHTML = `Scrambled text: ${scrambledText}`;
+  });
+</script>
 </html>
 
 
