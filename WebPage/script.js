@@ -1,5 +1,5 @@
 // const url = 'http://192.168.0.22:5000/';
-const url = 'https://4.242.50.139:8000/';
+const url = 'https://server.text-mixer.com:8000/';
 function detectDials() {
     const message = document.getElementById('message').value;
     fetch(url + 'detect_dials', {
@@ -38,11 +38,6 @@ function rephraseDraft() {
         body: JSON.stringify({ message: message, instruction: instruction, last_rephrasing: '' })
     })
     .then(response => streamResponse(response, responseDisplay))
-    // .then(response => response.json())
-    // .then(data => {
-    //     console.log(data);
-    //     responseDisplay.innerText = data.rephrased_draft;
-    // })
     .catch(error => {
         console.error('Error:', error);
     });
