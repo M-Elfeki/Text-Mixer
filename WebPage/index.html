@@ -14,7 +14,7 @@
             })
             .then(response => response.json())
             .then(data => {
-                document.getElementById('result').textContent = data.scrambled_text;
+                document.getElementById('result').textContent = data.scrambled;
                 console.log('Success:', data);
             })
             .catch((error) => {
