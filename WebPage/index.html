@@ -19,37 +19,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
-
-
-<!-- <!DOCTYPE html>
-<html>
-<head>
-    <title>Text Scrambler</title>
-    <script>
-        function scrambleText() {
-            var userInput = document.getElementById('userInput').value;
-            fetch('https://api.text-mixer.com/scramble', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({text: userInput})
-            })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('result').textContent = data.scrambled;
-                console.log('Success:', data);
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
-        }
-    </script>
-</head>
-<body>
-    <input type="text" id="userInput" placeholder="Enter text here">
-    <button onclick="scrambleText()">Scramble Text</button>
-    <p id="result"></p>
-</body>
-</html> -->
