@@ -11,7 +11,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const copyButton = document.getElementById('copyButton');
 
     let curDials = {};
-    copyButton.style.display = 'block'; // Ensure copyButton is always visible
+    copyButton.style.display = 'block'; 
+    rephraseButton.style.display = 'none';
 
     analyzeButton.addEventListener('click', analyzeText);
     copyButton.addEventListener('click', copyText);
@@ -62,18 +63,22 @@ document.addEventListener("DOMContentLoaded", function () {
         const levels = prompt("Enter the five levels separated by commas (e.g., Low, Below Average, Average, Above Average, High):");
         if (!levels) return;
         const valueList = levels.split(',').map(level => level.trim());
-        createSlider(traitName, valueList, true); // Pass true to indicate custom slider
+        valueList.push(Math.ceil(valueList.length/2).toString());
+        createSlider(traitName, valueList); 
     }
 
-    function createSlider(trait, valueList, isCustom = false) {
-        const index = isCustom ? Math.floor(valueList.length / 2) : valueList.length - 1;
+    function createSlider(trait, valueList) {
+        const index = valueList.length - 1;
         const sliderContainer = document.createElement('div');
         sliderContainer.className = 'slider-container';
         const label = createSliderLabel(trait);
         const [slider, display] = createSliderWithDisplay(trait, valueList, index);
         sliderContainer.append(label, slider, display);
         slidersContainer.appendChild(sliderContainer);
-        rephraseButton.style.display = 'block';
+        
+        if (textInput.value.length > 0) {
+            rephraseButton.style.display = 'block';
+        }
     }
 
     function createSliderLabel(text) {
@@ -87,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
         slider.type = 'range';
         slider.className = 'slider';
         slider.min = '0';
-        slider.max = valueList.length - 1;
+        slider.max = valueList.length - 2;
         slider.value = index;
         const display = document.createElement('span');
         display.textContent = valueList[index];
@@ -117,20 +122,37 @@ document.addEventListener("DOMContentLoaded", function () {
     function constructRephraseParams() {
         let curInstructionMsg = '';
         let lastRephrasing = '';
-        Object.entries(curDials).forEach(([trait, value]) => {
-            curInstructionMsg += `${trait}:${value};`;
-            lastRephrasing += `${trait}:${value};`;
+        const newDials = {}; 
+        slidersContainer.querySelectorAll('.slider-container').forEach(container => {
+            const trait = container.querySelector('label').textContent;
+            const value = container.querySelector('.slider-value-display').textContent;
+            
+            if (curDials[trait] !== value) {
+                curInstructionMsg += `${trait}:${value};`;
+            } else {
+                lastRephrasing += `${trait}:${value};`;
+            }
+    
+            newDials[trait] = value;
         });
+        curDials = {...newDials};
+    
         return { curInstructionMsg, lastRephrasing };
     }
 
     function streamResponse(response, displayElement) {
         const reader = response.body.getReader();
+        displayElement.innerText = '';
+        copyButton.style.display = 'none';
         function read() {
             reader.read().then(({done, value}) => {
-                if (done) return;
+                if (done) {
+                    copyButton.style.display = 'block'; 
+                    console.log('Stream finished.');
+                    return;
+                }
                 const chunk = new TextDecoder("utf-8").decode(value);
-                displayElement.innerText += chunk;
+                displayElement.innerText = displayElement.innerText +' ' +chunk;
                 read();
             });
         }

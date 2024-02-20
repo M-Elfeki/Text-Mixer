@@ -101,7 +101,7 @@ button:hover {
 }
 
 .slider-label {
-    color: #333;
+    color: #3d2929;
     margin: 0 10px;
     font-weight: bold;
     font-size: 1.2em;
@@ -111,7 +111,7 @@ button:hover {
     color: #333;
     margin: 0 10px;
     font-style: italic;
-    font-size: 1.1em;
+    font-size: 0.9em;
 }
 
 .slider {
