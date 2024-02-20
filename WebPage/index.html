@@ -11,24 +11,22 @@
         <h1>Text Mixer</h1>
         <div class="input-container">
             <textarea class="message" id="message" rows="3" placeholder="Enter your draft here..."></textarea>
-            <button id="analyzeButton">Analyze</button>
         </div>
         <div class="bubbles-container" id="bubblesContainer">
             <!-- Bubbles dynamically added here -->
         </div>
-        <!-- Moving addSliderButton here -->
-        <button id="addSliderButton" class="addSliderButton">Add Dial</button>
+        <div class="buttons-container top-buttons">
+            <button id="analyzeButton" class="gradient-button">Analyze</button>
+            <button id="addSliderButton" class="gradient-button">Add Dial</button>
+        </div>
         <hr>
         <div class="sliders-container" id="slidersContainer">
             <!-- Sliders dynamically added here -->
         </div>
-        <div class="button-container">
-            <button id="rephraseButton" class="rephraseButton">Rephrase</button>
+        <div class="buttons-container bottom-buttons">
+            <button id="rephraseButton" class="gradient-button">Rephrase</button>
+            <a href="#" id="copyButton" class="gradient-button">Copy</a>
         </div>
-        <div id="ResponseDisplay" class="response-display">
-            <a href="#" id="copyButton" class="copy-button">Copy</a>
-            <!-- Response text will be here -->
-        </div>        
     </div>
     <script src="script.js"></script>
 </body>

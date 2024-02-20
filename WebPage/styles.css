@@ -40,78 +40,86 @@ h1 {
     text-align: center;
 }
 
-button {
-    display: block;
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 1em;
+}
+
+/* Analyze Button */
+#analyzeButton {
+    background: linear-gradient(135deg, #00B4DB, #0083B0); /* Vibrant Blue */
+    color: white;
+}
+
+/* Add Dial Button */
+.addSliderButton {
+    background: linear-gradient(135deg, #FF5F6D, #FFC371); /* Sunset Orange */
+    color: white;
+}
+
+/* Rephrase Button - Make it more salient */
+.rephraseButton {
+    background: linear-gradient(135deg, #ED213A, #93291E); /* Strong Red */
+    color: white;
+}
+
+/* Copy Button */
+#copyButton {
+    background: linear-gradient(135deg, #F7971E, #FFD200); /* Cool Blue to Purple */
+    color: white;
+}
+
+.gradient-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Enhance hover effect */
+}
+
+
+.gradient-button {
     padding: 0.5em 1.5em;
     font-size: 1em;
     border-radius: 25px;
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
-    width: auto;
-    margin: 1em auto;
+    background: linear-gradient(135deg, #8EC5FC, #E0C3FC);
+    color: white;
+    text-decoration: none;
+    display: inline-block;
 }
 
-#analyzeButton {
-    background: linear-gradient(135deg, #6a11cb, #2575fc);
-    color: #fff;
-}
-
-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
-}
-
-.bubbles-container {
+.bubbles-container, .sliders-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
-    padding-bottom: 1em;
-}
-
-.bubble {
-    background-color: #007bff;
-    color: white;
-    border-radius: 20px;
-    padding: 5px 15px;
-    cursor: pointer;
-    transition: transform 0.3s;
-    background-image: linear-gradient(145deg, #574a6d, #7e6588);
-    box-shadow: 0 4px 15px 0 rgba(156, 39, 176, 0.25);
-}
-
-.bubble:hover {
-    transform: scale(1.1);
-}
-
-.sliders-container {
-    text-align: center;
-    padding: 1em 0;
+    margin-bottom: 1em;
 }
 
 .slider-container {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    width: 100%;
     margin: 20px 0;
+    padding: 10px;
     background: #f0f0f0;
     border-radius: 10px;
-    padding: 10px;
 }
 
 .slider-label {
-    color: #3d2929;
-    margin: 0 10px;
     font-weight: bold;
     font-size: 1.2em;
+    color: #333;
+    margin-right: 20px; /* Increased margin for clarity */
 }
 
 .slider-value-display {
-    color: #333;
-    margin: 0 10px;
     font-style: italic;
-    font-size: 0.9em;
+    font-size: 1em;
+    color: #666;
+    margin-left: 20px; /* Increased margin for clarity */
 }
 
 .slider {
@@ -119,9 +127,8 @@ button:hover {
     -webkit-appearance: none;
     height: 15px;
     border-radius: 7.5px;
-    background: #ddd;
+    background: linear-gradient(135deg, #9D50BB, #6E48AA);
     outline: none;
-    opacity: 0.7;
     transition: opacity .2s;
 }
 
@@ -135,7 +142,7 @@ button:hover {
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    background: #4CAF50;
+    background: linear-gradient(135deg, #FFD194, #D1913C);
     cursor: pointer;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
 }
@@ -144,42 +151,8 @@ button:hover {
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    background: #4CAF50;
+    background: linear-gradient(135deg, #FFD194, #D1913C);
     cursor: pointer;
-}
-
-.addSliderButton {
-    background-color: #3a91fb;
-    color: #fff;
-}
-
-.rephraseButton {
-    /* background-color: #ff6deb; */
-    background-image: linear-gradient(145deg, #654a6d, #886567);
-    color: #fff;
-}
-
-.copy-button {
-    background-color: #3498db;
-    color: white;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    padding: 5px;
-    border-radius: 5px;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.response-display {
-    background-color: #f8f9fa;
-    border-radius: 15px;
-    padding: 1em;
-    margin-top: 1em;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
-    overflow-y: auto;
-    position: relative;
-    padding-top: 2em;
 }
 
 @media (max-width: 768px) {
@@ -195,9 +168,5 @@ button:hover {
     .slider-container {
         flex-direction: column;
         align-items: flex-start;
-    }
-
-    .response-display {
-        width: calc(100% - 2em);
     }
 }
