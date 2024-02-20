@@ -61,15 +61,14 @@ h1 {
 
 /* Rephrase Button - Make it more salient */
 .rephraseButton {
-    background: linear-gradient(135deg, #FF5F6D, #FFC371);
+    background: linear-gradient(135deg, #ED213A, #93291E);
     color: white;
 }
 
 /* Copy Button */
 #copyButton {
-    background: linear-gradient(135deg, #ED213A, #93291E);
-    color: white;
-    
+    background: linear-gradient(135deg, #FF5F6D, #FFC371);
+    color: white;    
 }
 
 .gradient-button:hover {
@@ -162,7 +161,6 @@ h1 {
     font-weight: bold;
     font-size: 1.2em;
     color: #333;
-    margin-left: 20px;
     margin-right: 20px; 
 }
 
@@ -171,7 +169,6 @@ h1 {
     font-size: 1em;
     color: #666;
     margin-left: 20px; /* Increased margin for clarity */
-    margin-right: 20px;
 }
 
 .slider:hover {
