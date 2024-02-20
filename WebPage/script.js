@@ -98,13 +98,14 @@ document.addEventListener("DOMContentLoaded", function () {
         display.textContent = valueList[index];
         display.className = 'slider-value-display';
         slider.oninput = () => updateSliderValue(trait, valueList, slider, display);
+        
+        curDials[trait] = valueList[index];
         return [slider, display];
     }
 
     function updateSliderValue(trait, valueList, slider, display) {
         const value = valueList[slider.value];
         display.textContent = value;
-        curDials[trait] = value;
     }
 
     function rephraseText() {
@@ -136,7 +137,9 @@ document.addEventListener("DOMContentLoaded", function () {
             newDials[trait] = value;
         });
         curDials = {...newDials};
-        console.log(curInstructionMsg, lastRephrasing);
+        console.log(curDials);
+        console.log(curInstructionMsg);
+        console.log(lastRephrasing);
         return { curInstructionMsg, lastRephrasing };
     }
 
