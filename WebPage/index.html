@@ -3,19 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Detection and Rephrasing</title>
+    <title>Text-Mixer</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-    <h1>Dial Detection and Draft Rephrasing</h1>
-    <label for="message">Enter your draft:</label><br>
-    <textarea id="message" name="message" rows="4" cols="50"></textarea><br>
-    <button onclick="detectDials()">Detect Traits</button><br>
-    <button onclick="rephraseDraft()">Rephrase Draft</button><br>
-    <hr>
-    <div id="dials"></div>
-    <hr>
-    <div id="rephrase"></div>
-
+    <div class="main-container">
+        <h1>Text Mixer</h1>
+        <div class="input-container">
+            <textarea class="message" id="message" rows="4" placeholder="Enter your draft here..."></textarea>
+            <button id="analyzeButton">Analyze</button>
+        </div>
+        <div class="bubbles-container" id="bubblesContainer">
+            <!-- Bubbles dynamically added here -->
+        </div>
+        <hr>
+        <div class="sliders-container" id="slidersContainer">
+            <!-- Sliders dynamically added here -->
+        </div>
+        <div class="button-container">
+            <button id="addSliderButton" class="addSliderButton">+</button>
+            <button id="rephraseButton" class="rephraseButton">Rephrase</button>
+        </div>
+        <div id="ResponseDisplay" class="response-display">
+            <a href="#" id="copyButton" class="copy-button">Copy</a>
+            <!-- Response text will be here -->
+        </div>        
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
