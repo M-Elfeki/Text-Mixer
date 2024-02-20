@@ -49,26 +49,27 @@ h1 {
 
 /* Analyze Button */
 #analyzeButton {
-    background: linear-gradient(135deg, #00B4DB, #0083B0); /* Vibrant Blue */
+    background: linear-gradient(135deg, #FF5F6D, #FFC371);
     color: white;
 }
 
 /* Add Dial Button */
 .addSliderButton {
-    background: linear-gradient(135deg, #FF5F6D, #FFC371); /* Sunset Orange */
+    background: linear-gradient(135deg, #00B4DB, #0083B0); /* Vibrant Blue */
     color: white;
 }
 
 /* Rephrase Button - Make it more salient */
 .rephraseButton {
-    background: linear-gradient(135deg, #ED213A, #93291E);
+    background: linear-gradient(135deg, #FF5F6D, #FFC371);
     color: white;
 }
 
 /* Copy Button */
 #copyButton {
-    background: linear-gradient(135deg, #FF5F6D, #FFC371);
+    background: linear-gradient(135deg, #ED213A, #93291E);
     color: white;
+    
 }
 
 .gradient-button:hover {
@@ -127,22 +128,6 @@ h1 {
     border-radius: 10px;
 }
 
-.slider-label {
-    font-weight: bold;
-    font-size: 1.2em;
-    color: #333;
-    margin-left: 20px;
-    margin-right: 20px; /* Increased margin for clarity */
-}
-
-.slider-value-display {
-    font-style: italic;
-    font-size: 1em;
-    color: #666;
-    margin-left: 20px; /* Increased margin for clarity */
-    margin-right: 20px;
-}
-
 .slider {
     flex-grow: 1;
     -webkit-appearance: none;
@@ -152,10 +137,6 @@ h1 {
     outline: none;
     opacity: 0.7;
     transition: opacity .2s;
-}
-
-.slider:hover {
-    opacity: 1;
 }
 
 .slider::-webkit-slider-thumb {
@@ -175,6 +156,26 @@ h1 {
     border-radius: 50%;
     background: linear-gradient(135deg, #FFD194, #D1913C);
     cursor: pointer;
+}
+
+.slider-label {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #333;
+    margin-left: 20px;
+    margin-right: 20px; 
+}
+
+.slider-value-display {
+    font-style: italic;
+    font-size: 1em;
+    color: #666;
+    margin-left: 20px; /* Increased margin for clarity */
+    margin-right: 20px;
+}
+
+.slider:hover {
+    opacity: 1;
 }
 
 .response-display {
