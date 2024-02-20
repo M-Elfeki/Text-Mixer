@@ -36,7 +36,7 @@ h1 {
     border-radius: 25px;
     border: 1px solid #b1a5c6; /* Soft purple border */
     resize: none;
-    min-height: 150px;
+    min-height: 100px;
     text-align: center;
 }
 
