@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function createSlider(trait, valueList) {
-        const index = valueList.length - 1;
+        const index = valueList[parseInt(valueList.length - 1)];
         const sliderContainer = document.createElement('div');
         sliderContainer.className = 'slider-container';
         const label = createSliderLabel(trait);
@@ -92,8 +92,8 @@ document.addEventListener("DOMContentLoaded", function () {
         slider.type = 'range';
         slider.className = 'slider';
         slider.min = '0';
-        slider.max = valueList.length - 2;
-        slider.value = index;
+        slider.max = (valueList.length - 2).toString();
+        slider.value = (index).toString();
         const display = document.createElement('span');
         display.textContent = valueList[index];
         display.className = 'slider-value-display';
@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", function () {
             newDials[trait] = value;
         });
         curDials = {...newDials};
-    
+        console.log(curInstructionMsg, lastRephrasing);
         return { curInstructionMsg, lastRephrasing };
     }
 
