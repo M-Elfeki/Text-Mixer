@@ -54,7 +54,7 @@ h1 {
 }
 
 /* Add Dial Button */
-.addSliderButton {
+#addSliderButton {
     background: linear-gradient(135deg, #00B4DB, #0083B0); /* Vibrant Blue */
     color: white;
 }
