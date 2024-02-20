@@ -134,6 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // To-add: check if instruction is in lastRephrasing, otherwise incorporate it
         lastRephrasing = lastRephrasing + ', ' + curInstructionMsg;
         console.log(curInstructionMsg);
+        copyButton.style.display = 'block';
     });
 
     function streamResponse(response, displayElement) {
