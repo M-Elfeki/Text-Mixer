@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const copyButton = document.getElementById('copyButton');
 
     let curDials = {};
-    copyButton.style.display = 'block'; 
+    copyButton.style.display = 'none'; 
     rephraseButton.style.display = 'none';
 
     analyzeButton.addEventListener('click', analyzeText);

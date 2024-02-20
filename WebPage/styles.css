@@ -47,36 +47,6 @@ h1 {
     margin-bottom: 1em;
 }
 
-/* Analyze Button */
-#analyzeButton {
-    background: linear-gradient(135deg, #00B4DB, #0083B0); /* Vibrant Blue */
-    color: white;
-}
-
-/* Add Dial Button */
-.addSliderButton {
-    background: linear-gradient(135deg, #FF5F6D, #FFC371); /* Sunset Orange */
-    color: white;
-}
-
-/* Rephrase Button - Make it more salient */
-.rephraseButton {
-    background: linear-gradient(135deg, #ED213A, #93291E);
-    color: white;
-}
-
-/* Copy Button */
-#copyButton {
-    background: linear-gradient(135deg, #FF5F6D, #FFC371);
-    color: white;
-}
-
-.gradient-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Enhance hover effect */
-}
-
-
 .gradient-button {
     padding: 0.5em 1.5em;
     font-size: 1em;
@@ -84,33 +54,44 @@ h1 {
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
-    background: linear-gradient(135deg, #8EC5FC, #E0C3FC);
     color: white;
     text-decoration: none;
     display: inline-block;
 }
 
-.bubbles-container, .sliders-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 1em;
+#analyzeButton {
+    background: linear-gradient(135deg, #6a82fb, #a8e063);
+}
+
+.addSliderButton {
+    background: linear-gradient(135deg, #f7971e, #ffd200);
+}
+
+.rephraseButton {
+    background: linear-gradient(135deg, #fc466b, #3f5efb);
+}
+
+#copyButton {
+    background: linear-gradient(135deg, #24C6DC, #514A9D);
+}
+
+.gradient-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 .bubble {
-    background-color: #007bff; /* Fallback color */
+    background-image: linear-gradient(135deg, #8EC5FC, #E0C3FC);
     color: white;
     border-radius: 20px;
     padding: 5px 15px;
     cursor: pointer;
-    transition: transform 0.3s;
-    background-image: linear-gradient(135deg, #6a82fb, #dda0dd); /* Softer blue to lavender */
-    box-shadow: 0 4px 15px 0 rgba(108, 122, 137, 0.25); /* Soft shadow for depth */
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .bubble:hover {
     transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
 }
 
 .sliders-container {
@@ -130,16 +111,16 @@ h1 {
 
 .slider-label {
     font-weight: bold;
-    font-size: 1.2em;
+    font-size: 1.4em;
     color: #333;
-    margin-right: 20px; /* Increased margin for clarity */
+    margin-right: 40px;
 }
 
 .slider-value-display {
     font-style: italic;
-    font-size: 1em;
+    font-size: 1.1em;
     color: #666;
-    margin-left: 20px; /* Increased margin for clarity */
+    margin-left: 20px;
 }
 
 .slider {
@@ -147,9 +128,8 @@ h1 {
     -webkit-appearance: none;
     height: 15px;
     border-radius: 7.5px;
-    background: #ddd;
+    background: linear-gradient(135deg, #9D50BB, #6E48AA);
     outline: none;
-    opacity: 0.7;
     transition: opacity .2s;
 }
 
@@ -165,13 +145,10 @@ h1 {
     border-radius: 50%;
     background: linear-gradient(135deg, #FFD194, #D1913C);
     cursor: pointer;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 .slider::-moz-range-thumb {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
     background: linear-gradient(135deg, #FFD194, #D1913C);
     cursor: pointer;
 }
@@ -188,7 +165,7 @@ h1 {
 }
 
 @media (max-width: 768px) {
-    .main-container {
+    .main-container, .response-display {
         width: 90%;
         margin-top: 1em;
     }
@@ -200,8 +177,5 @@ h1 {
     .slider-container {
         flex-direction: column;
         align-items: flex-start;
-    }
-    .response-display {
-        width: calc(100% - 2em);
     }
 }
