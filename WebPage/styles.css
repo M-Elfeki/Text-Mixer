@@ -7,7 +7,7 @@
 
 body, html {
     height: 100%;
-    background-color: #F0F2F5;
+    background-color: #f9f7fd; /* Lighter, modern background */
 }
 
 .main-container {
@@ -23,7 +23,7 @@ body, html {
 
 h1 {
     font-size: 2.5em;
-    color: #333;
+    color: #524763; /* Modern, subtle purple */
     padding-bottom: 0.5em;
     text-align: center;
 }
@@ -34,7 +34,7 @@ h1 {
     padding: 0.5em;
     font-size: 1em;
     border-radius: 25px;
-    border: 1px solid #D0D3D4;
+    border: 1px solid #b1a5c6; /* Soft purple border */
     resize: none;
     min-height: 150px;
     text-align: center;
@@ -43,39 +43,25 @@ h1 {
 .buttons-container {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 10px; /* Reduced gap for consistency */
     margin-bottom: 1em;
 }
 
-/* Analyze Button */
+/* Button Gradients and Salience */
 #analyzeButton {
-    background: linear-gradient(135deg, #FF5F6D, #FFC371);
-    color: white;
+    background: linear-gradient(135deg, #f6d365, #fda085);
 }
 
-/* Add Dial Button */
 #addSliderButton {
-    background: linear-gradient(135deg, #00B4DB, #0083B0); /* Vibrant Blue */
-    color: white;
+    background: linear-gradient(135deg, #7f7fd5, #86a8e7, #91eae4);
 }
 
-/* Rephrase Button - Make it more salient */
+#copyButton {
+    background: linear-gradient(135deg, #9796f0, #fbc7d4); 
+}
+
 #rephraseButton {
-    background: linear-gradient(135deg, #ED213A, #93291E);
-    color: white;
-    /* background: linear-gradient(135deg, #FF5F6D, #FFC371);
-    color: white; */
-}
-
-/* Copy Button */
-.copyButton {
-    background: linear-gradient(135deg, #00B4DB, #0083B0); 
-    color: white;  
-}
-
-.gradient-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Enhance hover effect */
+    background: linear-gradient(135deg, #ff416c, #ff4b2b); /* Most salient */
 }
 
 .gradient-button {
@@ -85,10 +71,13 @@ h1 {
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
-    background: linear-gradient(135deg, #8EC5FC, #E0C3FC);
     color: white;
-    text-decoration: none;
     display: inline-block;
+}
+
+.gradient-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25); /* Enhanced 3D effect */
 }
 
 .bubbles-container, .sliders-container {
@@ -100,23 +89,17 @@ h1 {
 }
 
 .bubble {
-    background-color: #007bff; /* Fallback color */
+    background-image: linear-gradient(135deg, #8a2387, #e94057, #f27121); /* More salient */
     color: white;
     border-radius: 20px;
     padding: 5px 15px;
     cursor: pointer;
-    transition: transform 0.3s;
-    background-image: linear-gradient(135deg, #6a82fb, #dda0dd); /* Softer blue to lavender */
-    box-shadow: 0 4px 15px 0 rgba(108, 122, 137, 0.25); /* Soft shadow for depth */
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .bubble:hover {
     transform: scale(1.1);
-}
-
-.sliders-container {
-    text-align: center;
-    padding: 1em 0;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 .slider-container {
@@ -125,7 +108,7 @@ h1 {
     width: 100%;
     margin: 20px 0;
     padding: 10px;
-    background: #f0f0f0;
+    background: #e6e4ff; /* Light purple background for sliders */
     border-radius: 10px;
 }
 
@@ -140,41 +123,23 @@ h1 {
     transition: opacity .2s;
 }
 
-.slider::-webkit-slider-thumb {
+.slider::-webkit-slider-thumb, .slider::-moz-range-thumb {
     -webkit-appearance: none;
     appearance: none;
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #FFD194, #D1913C);
+    background: linear-gradient(135deg, #ff8c00, #ff0080);
     cursor: pointer;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
 }
 
-.slider::-moz-range-thumb {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #FFD194, #D1913C);
-    cursor: pointer;
-}
-
-.slider-label {
-    font-weight: bold;
-    font-size: 1.2em;
-    color: #333;
-    margin-right: 20px; 
-}
-
-.slider-value-display {
-    font-style: italic;
-    font-size: 1em;
-    color: #666;
-    margin-left: 20px; /* Increased margin for clarity */
-}
-
-.slider:hover {
-    opacity: 1;
+.slider-label, .slider-value-display {
+    color: #524763; /* Consistent purple tone */
+    font-weight: bold; /* Label */
+    font-style: italic; /* Value */
+    font-size: 1em; /* Adjusted for consistency */
+    margin: 0 15px; /* Added margin for spacing */
 }
 
 .response-display {
@@ -189,20 +154,8 @@ h1 {
 }
 
 @media (max-width: 768px) {
-    .main-container {
-        width: 90%;
-        margin-top: 1em;
-    }
-
-    h1 {
-        font-size: 2em;
-    }
-
     .slider-container {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .response-display {
-        width: calc(100% - 2em);
+        flex-direction: row; /* Ensure inline display on phones */
+        justify-content: space-between; /* Distribute space */
     }
 }
