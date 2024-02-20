@@ -68,8 +68,8 @@ h1 {
 }
 
 /* Copy Button */
-#copyButton {
-    background: linear-gradient(135deg, #00B4DB, #0083B0); /* Vibrant Blue */
+.copyButton {
+    background: linear-gradient(135deg, #00B4DB, #0083B0); 
     color: white;  
 }
 
