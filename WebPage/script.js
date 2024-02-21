@@ -114,6 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function rephraseText() {
         const message = textInput.value;
         const {curInstructionMsg, lastRephrasing} = constructRephraseParams();
+        if (curInstructionMsg.length === 0) return;
         fetch(`${url}rephrase_draft`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
