@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let curDials = {};
     copyButton.style.display = 'none'; 
     rephraseButton.style.display = 'none';
+    addSliderButton.style.display = 'none';
 
     analyzeButton.addEventListener('click', analyzeText);
     copyButton.addEventListener('click', copyText);
@@ -29,6 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(response => response.json())
         .then(updateUIWithDials)
         .catch(console.error);
+        addSliderButton.style.display = 'block';
     }
 
     function updateUIWithDials(data) {
@@ -137,9 +139,6 @@ document.addEventListener("DOMContentLoaded", function () {
             newDials[trait] = value;
         });
         curDials = {...newDials};
-        console.log(curDials);
-        console.log(curInstructionMsg);
-        console.log(lastRephrasing);
         return { curInstructionMsg, lastRephrasing };
     }
 
@@ -150,8 +149,9 @@ document.addEventListener("DOMContentLoaded", function () {
         function read() {
             reader.read().then(({done, value}) => {
                 if (done) {
+                    responseDisplay.innerText = responseDisplay.innerText.replace(/^\s+|\s+$/g, '');
+
                     copyButton.style.display = 'block'; 
-                    console.log('Stream finished.');
                     return;
                 }
                 const chunk = new TextDecoder("utf-8").decode(value);

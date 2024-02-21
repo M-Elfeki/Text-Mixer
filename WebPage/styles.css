@@ -102,11 +102,11 @@ h4 a {
 
 /* Button Gradients and Salience */
 #analyzeButton {
-    background: linear-gradient(135deg, #f6d365, #fda085);
+    background: linear-gradient(135deg, #7f7fd5, #86a8e7, #91eae4);
 }
 
 #addSliderButton {
-    background: linear-gradient(135deg, #7f7fd5, #86a8e7, #91eae4);
+    background: linear-gradient(135deg, #f6d365, #fda085);
 }
 
 #copyButton {
