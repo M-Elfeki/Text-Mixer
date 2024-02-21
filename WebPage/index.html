@@ -8,15 +8,25 @@
 </head>
 <body>
     <div class="main-container">
-        <h1>Text Mixer</h1>
+        <div class="title-container">
+            <h1>Text Mixer</h1>
+            <div class="content-container">
+                <img src="icon.png" alt="Icon" class="icon">
+                <div class="text-container">
+                    <h3>Drop a message on the deck, tweak the dials of tone and style, and remix your words into a message that perfectly vibes with the audience.</h3>
+                    <h4>You can pay us for this free alpha experience by sharing your thoughts <a href="https://docs.google.com/forms/d/1l8aiVEHFvL-jt0-IqtHxFHoWAEaKf8q5ZULqVR4LPac/prefill">here</a></h4>.
+                </div>
+            </div>
+        </div>
+            
         <div class="input-container">
-            <textarea class="message" id="message" rows="2" placeholder="Enter your draft here..."></textarea>
+            <textarea class="message" id="message" rows="2" placeholder="Drop your draft here..."></textarea>
         </div>
         <div class="bubbles-container" id="bubblesContainer">
             <!-- Bubbles dynamically added here -->
         </div>
         <div class="buttons-container top-buttons">
-            <button id="analyzeButton" class="gradient-button">Analyze</button>
+            <button id="analyzeButton" class="gradient-button">Detect Vibes</button>
             <button id="addSliderButton" class="gradient-button">Add Dial</button>
         </div>
         <hr>
@@ -24,7 +34,7 @@
             <!-- Sliders dynamically added here -->
         </div>
         <div class="buttons-container bottom-buttons">
-            <button id="rephraseButton" class="gradient-button">Rephrase</button>
+            <button id="rephraseButton" class="gradient-button">Remix Text</button>
             <a href="#" id="copyButton" class="gradient-button">Copy</a>
         </div>
         <div id="ResponseDisplay" class="response-display">

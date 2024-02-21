@@ -21,16 +21,69 @@ body, html {
     margin-bottom: 3em;
 }
 
+.title-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.icon {
+    width: 160px;
+    height: auto;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.content-container {
+    display: flex;
+    align-items: center;
+}
+
+.text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: center;
+}
+
 h1 {
     font-size: 2.5em;
-    color: #524763; /* Modern, subtle purple */
+    color: #524763;
     padding-bottom: 0.5em;
     text-align: center;
 }
 
+h3, h4 {
+    font-size: 1em;
+    padding-bottom: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+h3 {
+    color: #804f3a;
+}
+
+h4 {
+    color: #304d2b;
+}
+h4 a {
+    color: #3284cd; /* Match link color with h4 text color */
+    text-decoration: underline; /* Underline the link */
+}
+
+@media screen and (max-width: 600px) {
+    .icon {
+        display: none; /* Hide the icon on smaller screens */
+    }
+}
+
+
 .message {
     width: calc(100% - 1em);
     margin-bottom: 1em;
+    margin-top: 0.2em;
     padding: 0.5em;
     font-size: 1em;
     border-radius: 25px;
