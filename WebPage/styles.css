@@ -7,16 +7,16 @@
 
 body, html {
     height: 100%;
-    background-color: #f9f7fd; /* Lighter, modern background */
+    background-color: #FAF9F6; /* Updated to a soft, modern off-white background */
 }
 
 .main-container {
     max-width: 600px;
     margin: auto;
     padding: 2em;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Slightly deeper shadow for 3D effect */
     border-radius: 20px;
-    background-color: white;
+    background-color: #FFFFFF; /* Kept white for clarity and focus */
     margin-top: 3em;
     margin-bottom: 3em;
 }
@@ -30,7 +30,6 @@ body, html {
 }
 
 .icon {
-    /* width: 160px; */
     max-width: 30%; 
     height: auto;
     margin-right: 10px;
@@ -41,7 +40,6 @@ body, html {
 .content-container {
     display: flex;
     align-items: center;
-    /* flex-wrap: wrap; */
 }
 
 .text-container {
@@ -53,7 +51,7 @@ body, html {
 
 h1 {
     font-size: 2.5em;
-    color: #524763;
+    color: #333333; /* Darker, more pronounced color for contrast */
     padding-bottom: 0.5em;
     text-align: center;
 }
@@ -65,38 +63,40 @@ h3, h4 {
 }
 
 h3 {
-    color: #804f3a;
+    color: #555555;
 }
 
 h4 {
-    color: #304d2b;
-}
-h4 a {
-    color: #3284cd; /* Match link color with h4 text color */
-    text-decoration: underline; /* Underline the link */
+    color: #777777;
+    font-weight: normal;
+    font-style: italic;
+    text-align: center;
 }
 
-/* Ensure the icon is displayed but adjust for smaller screens */
+h4 a {
+    color: #6C63FF; /* Vibrant, yet deep purple for links */
+    text-decoration: underline;
+}
+
+/* Media query adjustments for icon display and alignment */
 @media screen and (max-width: 600px) {
     .icon {
-        width: 60%; /* Adjust size to fit smaller screens */
+        width: 60%;
         height: auto;
-        margin-right: 5px; /* Adjust margin for tighter spaces */
+        margin-right: 5px;
         margin-bottom: 5px;
     }
 
     .content-container {
-        flex-direction: column; /* Stack icon and text vertically on small screens */
-        align-items: center; /* Center-align the items for a better look */
+        flex-direction: column;
+        align-items: center;
     }
 
     .text-container {
-        align-items: center; /* Ensure text is centered below the icon */
+        align-items: center;
         text-align: center;
     }
 }
-
-
 
 .message {
     width: calc(100% - 1em);
@@ -105,34 +105,35 @@ h4 a {
     padding: 0.5em;
     font-size: 1em;
     border-radius: 25px;
-    border: 1px solid #b1a5c6; /* Soft purple border */
+    border: 1px solid #D1D1D1; /* Softer border color */
     resize: none;
-    min-height: 100px;
+    min-height: 80px;
     text-align: center;
+    background-color: #EFEFEF; /* Light grey for subtle contrast */
 }
 
 .buttons-container {
     display: flex;
     justify-content: center;
-    gap: 10px; /* Reduced gap for consistency */
+    gap: 10px;
     margin-bottom: 1em;
 }
 
-/* Button Gradients and Salience */
+/* Updated button gradients and 3D effects for vibrancy and salience */
 #analyzeButton {
-    background: linear-gradient(135deg, #7f7fd5, #86a8e7, #91eae4);
+    background: linear-gradient(135deg, #FFD194, #D1913C); /* Warm, inviting gradient */
 }
 
 #addSliderButton {
-    background: linear-gradient(135deg, #f6d365, #fda085);
+    background: linear-gradient(135deg, #89C4F4, #6BB9F0); /* Calm, appealing blue */
 }
 
 #copyButton {
-    background: linear-gradient(135deg, #9796f0, #fbc7d4); 
+    background: linear-gradient(135deg, #A7DBD8, #89C4F4); /* Soft, friendly cyan */
 }
 
 #rephraseButton {
-    background: linear-gradient(135deg, #ff416c, #ff4b2b); /* Most salient */
+    background: linear-gradient(135deg, #EF4836, #D64541); /* Most salient, vibrant red */
 }
 
 .gradient-button {
@@ -148,7 +149,7 @@ h4 a {
 
 .gradient-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25); /* Enhanced 3D effect */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Enhanced 3D effect */
 }
 
 .bubbles-container, .sliders-container {
@@ -160,8 +161,7 @@ h4 a {
 }
 
 .bubble {
-    background-image: linear-gradient(135deg, rgba(138, 35, 135, 0.5), rgba(233, 64, 87, 0.5), rgba(242, 113, 33, 0.5));
-
+    background-image: linear-gradient(135deg, #83d4d4, #b1ecd7); /* Calming, appealing gradient for bubbles */
     color: white;
     border-radius: 20px;
     padding: 5px 15px;
@@ -171,7 +171,7 @@ h4 a {
 
 .bubble:hover {
     transform: scale(1.1);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); /* Subtle 3D hover effect */
 }
 
 .slider-container {
@@ -180,7 +180,7 @@ h4 a {
     width: 100%;
     margin: 5px 0;
     padding: 10px;
-    background: #e6e4ff; /* Light purple background for sliders */
+    background: #EFEFEF; /* Consistent light grey background */
     border-radius: 10px;
 }
 
@@ -201,17 +201,17 @@ h4 a {
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #ff8c00, #ff0080);
+    background: linear-gradient(135deg, #FFC371, #FF5F6D); /* Vibrant thumb gradient */
     cursor: pointer;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
 }
 
 .slider-label, .slider-value-display {
-    color: #524763; /* Consistent purple tone */
-    font-weight: bold; /* Label */
-    font-style: italic; /* Value */
-    font-size: 1em; /* Adjusted for consistency */
-    margin: 0 15px; /* Added margin for spacing */
+    color: #524763; /* Retained for consistency */
+    font-weight: bold;
+    font-style: italic;
+    font-size: 1em;
+    margin: 0 15px;
 }
 
 .response-display {
@@ -227,7 +227,7 @@ h4 a {
 
 @media (max-width: 768px) {
     .slider-container {
-        flex-direction: row; /* Ensure inline display on phones */
-        justify-content: space-between; /* Distribute space */
+        flex-direction: row;
+        justify-content: space-between;
     }
 }
