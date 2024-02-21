@@ -30,7 +30,8 @@ body, html {
 }
 
 .icon {
-    width: 160px;
+    /* width: 160px; */
+    max-width: 100%; 
     height: auto;
     margin-right: 10px;
     margin-bottom: 10px;
@@ -73,11 +74,12 @@ h4 a {
     text-decoration: underline; /* Underline the link */
 }
 
-@media screen and (max-width: 600px) {
+/* Hide the icon on smaller screens */
+/* @media screen and (max-width: 600px) {
     .icon {
-        display: none; /* Hide the icon on smaller screens */
+        display: none; 
     }
-}
+} */
 
 
 .message {
