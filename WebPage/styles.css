@@ -142,7 +142,8 @@ h4 a {
 }
 
 .bubble {
-    background-image: linear-gradient(135deg, #8a2387, #e94057, #f27121); /* More salient */
+    background-image: linear-gradient(135deg, rgba(138, 35, 135, 0.5), rgba(233, 64, 87, 0.5), rgba(242, 113, 33, 0.5));
+
     color: white;
     border-radius: 20px;
     padding: 5px 15px;
