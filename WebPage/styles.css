@@ -31,10 +31,11 @@ body, html {
 
 .icon {
     /* width: 160px; */
-    max-width: 100%; 
+    max-width: 30%; 
     height: auto;
     margin-right: 10px;
     margin-bottom: 10px;
+    display: inline-block;
 }
 
 .content-container {
@@ -75,11 +76,11 @@ h4 a {
 }
 
 /* Hide the icon on smaller screens */
-/* @media screen and (max-width: 600px) {
+@media screen and (max-width: 600px) {
     .icon {
-        display: none; 
+        display: inline-block; 
     }
-} */
+}
 
 
 .message {
