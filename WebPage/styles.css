@@ -76,11 +76,11 @@ h4 a {
 }
 
 /* Hide the icon on smaller screens */
-@media screen and (max-width: 600px) {
+/* @media screen and (max-width: 600px) {
     .icon {
         display: inline-block; 
     }
-}
+} */
 
 
 .message {
