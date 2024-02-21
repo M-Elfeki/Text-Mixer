@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function analyzeText() {
         const message = textInput.value;
+        if (message.length === 0) return;
         fetch(`${url}detect_dials`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
