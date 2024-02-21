@@ -160,11 +160,10 @@ h4 a {
     display: flex;
     align-items: center;
     width: 100%;
-    margin: 10px 0;
+    margin: 5px 0;
     padding: 10px;
     background: #e6e4ff; /* Light purple background for sliders */
     border-radius: 10px;
-    /* gap: 5px; */
 }
 
 .slider {
