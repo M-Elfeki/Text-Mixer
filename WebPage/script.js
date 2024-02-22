@@ -61,9 +61,9 @@ document.addEventListener("DOMContentLoaded", function () {
         bubble.className = 'bubble';
         bubble.textContent = trait;
 
-        let hue = randomInRange(180, 240); 
-        let saturation = randomInRange(60, 100);
-        let lightness = randomInRange(40, 60);
+        let hue = randomInRange(120, 240); 
+        let saturation = randomInRange(60, 150);
+        let lightness = randomInRange(40, 100);
         bubble.style.backgroundColor = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
 
         bubble.onclick = () => {
