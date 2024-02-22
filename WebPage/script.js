@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
         Object.entries(data).forEach(([trait, valueList], index) => {
             setTimeout(() => {
                 createBubble(trait, valueList);
-            }, index * 50);
+            }, index * 100);
         });
     }
     
