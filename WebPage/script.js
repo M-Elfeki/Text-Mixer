@@ -52,10 +52,19 @@ document.addEventListener("DOMContentLoaded", function () {
         rephraseButton.style.display = 'none';
     }
 
+
+    let baseHue = 200; 
+    let hueIncrement = 10; 
+    let currentHueIncrement = 0;
     function createBubble(trait, valueList) {
         const bubble = document.createElement('div');
         bubble.className = 'bubble';
         bubble.textContent = trait;
+
+        let currentHue = (baseHue + currentHueIncrement) % 360;
+        bubble.style.backgroundColor = `hsl(${currentHue}, 70%, 50%)`;
+        currentHueIncrement += hueIncrement;
+
         bubble.onclick = () => {
             createSlider(trait, valueList);
             bubble.style.display = 'none';
