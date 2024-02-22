@@ -61,12 +61,10 @@ document.addEventListener("DOMContentLoaded", function () {
         bubble.className = 'bubble';
         bubble.textContent = trait;
 
-        let hue = randomInRange(180, 240); // e.g., blue shades
+        let hue = randomInRange(180, 240); 
         let saturation = randomInRange(60, 100);
         let lightness = randomInRange(40, 60);
         bubble.style.backgroundColor = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
-
-        currentHueIncrement += hueIncrement;
 
         bubble.onclick = () => {
             createSlider(trait, valueList);
