@@ -36,10 +36,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function updateUIWithDials(data) {
         resetUI();
-        Object.entries(data).forEach(([trait, valueList]) => {
-            createBubble(trait, valueList);
+        Object.entries(data).forEach(([trait, valueList], index) => {
+            setTimeout(() => {
+                createBubble(trait, valueList);
+            }, index * 50);
         });
     }
+    
 
     function resetUI() {
         curDials = {};
