@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     let baseHue = 200; 
-    let hueIncrement = 10; 
+    let hueIncrement = 50; 
     let currentHueIncrement = 0;
     function createBubble(trait, valueList) {
         const bubble = document.createElement('div');
