@@ -53,16 +53,19 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    let baseHue = 200; 
-    let hueIncrement = 50; 
-    let currentHueIncrement = 0;
+    function randomInRange(min, max) {
+        return Math.random() * (max - min) + min;
+    }
     function createBubble(trait, valueList) {
         const bubble = document.createElement('div');
         bubble.className = 'bubble';
         bubble.textContent = trait;
 
-        let currentHue = (baseHue + currentHueIncrement) % 360;
-        bubble.style.backgroundColor = `hsl(${currentHue}, 70%, 50%)`;
+        let hue = randomInRange(180, 240); // e.g., blue shades
+        let saturation = randomInRange(60, 100);
+        let lightness = randomInRange(40, 60);
+        bubble.style.backgroundColor = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+
         currentHueIncrement += hueIncrement;
 
         bubble.onclick = () => {
