@@ -61,9 +61,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function addCustomSlider() {
-        const traitName = prompt("Enter the name for the new slidebar:");
+        const traitName = prompt("Enter the new dial's name:");
         if (!traitName) return;
-        const levels = prompt("Enter the five levels separated by commas (e.g., Low, Below Average, Average, Above Average, High):");
+        const levels = prompt("Enter the dial's levels separated by commas:", "Low, Average, High");
         if (!levels) return;
         const valueList = levels.split(',').map(level => level.trim());
         valueList.push(Math.ceil(valueList.length/2).toString());
