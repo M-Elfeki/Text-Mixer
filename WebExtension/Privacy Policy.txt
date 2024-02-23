@@ -1,0 +1,22 @@
+Text Mixer Privacy Policy
+
+Welcome to the Text Mixer extension! Your privacy is crucial to us, and this policy outlines the types of information we collect, how it's used, and the measures we take to protect your data.
+
+Information Collection and Use
+
+Usage Data: We collect anonymized data on how you use Text Mixer to improve the extension. This includes which features you use and any errors you encounter.
+Interactions with Text Mixer: When you use Text Mixer to remix text, we temporarily process the text to provide the service. We do not store this text after your session ends.
+Google Analytics: We use Google Analytics to understand how our extension is used. This includes collecting data such as how often you use the extension and any interactions with its features.
+Data Sharing
+
+We do not share your personal information with third parties, except as required by law.
+Anonymized, aggregate data about usage may be shared for analytical purposes.
+Data Security
+
+We implement industry-standard security measures to protect your data from unauthorized access or disclosure.
+Changes to This Policy
+
+We may update this privacy policy to reflect changes to our information practices. If we make any significant changes, we will notify you by updating the date at the top of the policy.
+Contact Us
+
+If you have any questions about this privacy policy, please contact us at m.elfeki11@gmail.com

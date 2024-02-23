@@ -26,6 +26,9 @@
     ],
     "host_permissions": [
       "https://api.text-mixer.com/*"
-    ]
+    ],
+    "content_security_policy": {
+      "extension_pages": "script-src 'self'; object-src 'self'; connect-src 'self' https://api.text-mixer.com;"
+    } 
   }
   
