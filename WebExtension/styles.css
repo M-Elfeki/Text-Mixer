@@ -1,109 +1,241 @@
-body {
-    font-family: 'Poppins', sans-serif;
+* {
     margin: 0;
     padding: 0;
-    background-color: #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body, html {
+    height: 100%;
+    background-color: #FAF9F6; /* Updated to a soft, modern off-white background */
+    width: 500px;
 }
 
 .main-container {
-    text-align: center;
-    width: 900px; /* Increased width for accommodating more bubbles and a wider slider */
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #f5f9ff;
-    border-radius: 10px;
-    border: 2px solid #ccc; /* DJ mixer-like border */
+    width: 80%;
+    margin: auto;
+    padding: 2em;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Slightly deeper shadow for 3D effect */
+    border-radius: 20px;
+    background-color: #FFFFFF; /* Kept white for clarity and focus */
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
 }
 
-.bubbles-container {
+.title-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.icon {
+    max-width: 30%; 
+    height: auto;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+.content-container {
+    display: flex;
+    align-items: center;
+}
+
+.text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #333333; /* Darker, more pronounced color for contrast */
+    padding-bottom: 0.2em;
+    text-align: center;
+}
+
+h3, h4 {
+    font-size: 1em;
+    padding-bottom: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+h3 {
+    color: #555555;
+}
+
+h4 {
+    color: #777777;
+    font-weight: normal;
+    font-style: italic;
+    text-align: center;
+    margin-top: 1em;
+}
+
+h4 a {
+    color: #6C63FF; /* Vibrant, yet deep purple for links */
+    text-decoration: underline;
+}
+
+/* Media query adjustments for icon display and alignment */
+@media screen and (max-width: 600px) {
+    .icon {
+        width: 60%;
+        height: auto;
+        margin-right: 5px;
+        margin-bottom: 5px;
+    }
+
+    .content-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .text-container {
+        align-items: center;
+        text-align: center;
+    }
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 1em;
+}
+
+#addSliderButton {
+    background: linear-gradient(135deg, #FFD700, #FFA500); /* Calm, appealing blue */
+}
+
+#copyButton {
+    background: linear-gradient(135deg, #55aadd, #aad4f7); /* Soft, friendly cyan */
+}
+
+#rephraseButton {
+    background: linear-gradient(135deg, #EF4836, #D64541); /* Most salient, vibrant red */
+}
+
+.close-button {
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto; /* Ensures it is pushed to the right */
+    padding: 0 10px;
+}
+
+/* Optional: Change the icon/color on hover */
+.close-button:hover {
+    color: #FF6347; /* A shade that matches the delete action */
+}
+
+
+.gradient-button {
+    padding: 0.5em 1.5em;
+    font-size: 1em;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: white;
+    display: inline-block;
+}
+
+.gradient-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Enhanced 3D effect */
+}
+
+.bubbles-container, .sliders-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
-    padding: 20px;
+    margin-bottom: 1em;
 }
 
+.bubble, .slider-container, .response-display {
+    width: auto; 
+    max-width: 100%;
+}
+
+
 .bubble {
-    background-color: #007bff;
-    color: #fff;
+    background-image: linear-gradient(135deg, #83d4d4, #b1ecd7); /* Calming, appealing gradient for bubbles */
+    color: white;
     border-radius: 20px;
-    padding: 5px 10px;
+    padding: 5px 15px;
     cursor: pointer;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s, box-shadow 0.3s;
+    width: fit-content;
 }
 
 .bubble:hover {
     transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); /* Subtle 3D hover effect */
 }
 
-hr {
-    border: none;
-    border-top: 2px solid #eee;
-    margin: 20px auto;
-    width: 80%;
-}
-
-.sliders-container {
+.slider-container {
     display: flex;
-    flex-direction: column;
-    align-items: left;
+    align-items: center;
+    width: 100%;
+    margin: 5px 0;
+    padding: 10px;
+    background: #EFEFEF; /* Consistent light grey background */
+    border-radius: 10px;
 }
 
 .slider {
-    width: 500px; /* Wider slider for better user experience */
-    margin: 10px 10px;
+    flex-grow: 1;
+    -webkit-appearance: none;
+    height: 15px;
+    border-radius: 7.5px;
+    background: #ddd;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity .2s;
 }
 
-.slider-label {
-    display: inline-block;
-    text-align: left;
-    width: 300px; /* Position the label to the left */
-}
-
-.slider-value {
-    display: inline-block;
-    width: 300px; /* Position the value to the right of the label */
-}
-
-.button-container {
-    display: flex;
-    justify-content: space-evenly;
-    width: 100%;
-    margin-top: 20px;
-}
-
-.addSliderButton, .rephraseButton {
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+.slider::-webkit-slider-thumb, .slider::-moz-range-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #FFC371, #FF5F6D); /* Vibrant thumb gradient */
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
 }
 
-.addSliderButton {
-    background-color: #1974d6; /* Add button with a distinct color */
-}
-
-.rephraseButton {
-    background-color: #4CAF50; /* Rephrase button with a distinct color */
-}
-
-.addSliderButton:hover, .rephraseButton:hover {
-    transform: translateY(-2px);
+.slider-label, .slider-value-display {
+    color: #524763; /* Retained for consistency */
+    font-weight: bold;
+    font-style: italic;
+    font-size: 1em;
+    margin: 0 15px;
 }
 
 .response-display {
-    text-align: left;
-    padding: 20px;
     background-color: #f8f9fa;
-    border-radius: 5px;
-    margin: 20px auto;
-    width: 80%;
+    border-radius: 15px;
+    padding: 1em;
+    /* margin-top: 1em; */
     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
-    max-height: 200px;
     overflow-y: auto;
+    position: relative;
+    /* padding-top: 2em; */
+}
+
+@media (max-width: 768px) {
+    .slider-container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
 }

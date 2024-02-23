@@ -8,20 +8,39 @@
 </head>
 <body>
     <div class="main-container">
-        <h1>Text Mixer</h1>
+        <div class="title-container">
+            <h3>Spin your text like a DJ remixing a track</h3>
+            <img src="./assets/icon.png" alt="Icon" class="icon">
+        </div>
+            
         <div class="bubbles-container" id="bubblesContainer">
             <!-- Bubbles dynamically added here -->
+        </div>
+        <div class="buttons-container top-buttons">
+            <button id="addSliderButton" class="gradient-button">Add Dial</button>
         </div>
         <hr>
         <div class="sliders-container" id="slidersContainer">
             <!-- Sliders dynamically added here -->
         </div>
-        <div class="button-container">
-            <button id="addSliderButton" class="addSliderButton">+</button>
-            <button id="rephraseButton" class="rephraseButton">Rephrase</button>
+        <div class="buttons-container bottom-buttons">
+            <button id="rephraseButton" class="gradient-button">Remix Text</button>
+            <a href="#" id="copyButton" class="gradient-button">Copy</a>
         </div>
-        <div id="ResponseDisplay" class="response-display"></div>
+        <div id="ResponseDisplay" class="response-display">
+            <!-- Response text will be here -->
+        </div>     
+        <h4>You can pay us for this free <a href="https://text-mixer.com/">alpha experience</a> by sharing your thoughts <a href="https://docs.google.com/forms/d/1l8aiVEHFvL-jt0-IqtHxFHoWAEaKf8q5ZULqVR4LPac/prefill">here</a></h4>.
     </div>
     <script src="script.js"></script>
+    <script src="script.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JG73F6ZLGD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        
+        gtag('config', 'G-JG73F6ZLGD');
+    </script>
 </body>
 </html>

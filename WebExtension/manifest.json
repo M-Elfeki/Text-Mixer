@@ -2,13 +2,13 @@
     "manifest_version": 3,
     "name": "Text Mixer",
     "version": "1.0",
-    "description": "Fine-Tuning Texts, Tweets & Email with AI-Powered Precision.",
+    "description": "Spin your text like a DJ remixing a track.",
     "action": {
       "default_popup": "index.html",
       "default_icon": {
-        "16": "./assets/mixer.png",
-        "48": "./assets/mixer.png",
-        "128": "./assets/mixer.png"
+        "16": "assets/16x16.png",
+        "48": "assets/48x48.png",
+        "128": "assets/128x128.png"
       }
     },
     "background": {
@@ -25,7 +25,7 @@
       }
     ],
     "host_permissions": [
-      "http://4.242.50.139:8000/*"
+      "https://api.text-mixer.com/*"
     ]
   }
   

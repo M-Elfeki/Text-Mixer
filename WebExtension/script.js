@@ -1,140 +1,230 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // const url = 'http://192.168.0.22:5000/';
-    const url = 'http://4.242.50.139:8000/';
+    const url = 'https://api.text-mixer.com/';
+    const sessionId = generateSessionId();
     const rephraseButton = document.getElementById('rephraseButton');
     const responseDisplay = document.getElementById('ResponseDisplay');
     const addSliderButton = document.getElementById('addSliderButton');
     const bubblesContainer = document.getElementById('bubblesContainer');
     const slidersContainer = document.getElementById('slidersContainer');
+    const copyButton = document.getElementById('copyButton');
 
-    let curDraft = '';
-    let curInstruction = {};
+    let curDials = {};
+    let curMessage = '';
+    copyButton.style.display = 'none'; 
+    rephraseButton.style.display = 'none';
+    addSliderButton.style.display = 'none';
+
+    copyButton.addEventListener('click', copyText);
+    addSliderButton.addEventListener('click', addCustomSlider);
+    rephraseButton.addEventListener('click', rephraseText);
 
     chrome.runtime.sendMessage({ request: "getSelectedText" }, function (response) {
         if (response && response.selectedText) {
             message = response.selectedText;
-            fetch(url + 'detect_dials', {
+            if (message.length === 0) {
+                alertEmptySelection();
+                return;
+            } 
+            curMessage = message;
+            fetch(`${url}detect_dials`, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ message: message })
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ session_id: sessionId, message: message })
             })
-                .then(response => response.json())
-                .then(data => {
-                    curDraft = ''
-                    curInstruction = {}
-                    bubblesContainer.innerHTML = '';
-                    slidersContainer.innerHTML = '';
-                    responseDisplay.innerText = '';
-                    rephraseButton.style.display = 'none';
-
-                    for (var key in data) {
-                        createBubble(key, data[key]);
-                    }
-                    curDraft = message;
-                })
-                .catch(error => {
-                    console.log(url + 'detect_dials');
-                    console.error('Error:', error);
-                });
+            .then(response => response.json())
+            .then(updateUIWithDials)
+            .catch(console.error);
+            addSliderButton.style.display = 'block';
+        } else {
+            alertEmptySelection();
+            return;
         }
     });
+
+    function updateUIWithDials(data) {
+        resetUI();
+        Object.entries(data).forEach(([trait, valueList], index) => {
+            setTimeout(() => {
+                createBubble(trait, valueList);
+            }, index * 100);
+        });
+    }
+
+    function alertEmptySelection() {
+        responseDisplay.innerText = "Please select some text in your browser tab and try again.";
+        responseDisplay.style.color = "red";
+        responseDisplay.style.fontSize = "24px";
+        responseDisplay.style.textAlign = "center";
+        responseDisplay.style.fontStyle = "italic";
+    }
+    
+
+    function resetUI() {
+        curDials = {};
+        bubblesContainer.innerHTML = '';
+        slidersContainer.innerHTML = '';
+        responseDisplay.innerText = '';
+        rephraseButton.style.display = 'none';
+    }
+
+
+    function randomInRange(min, max) {
+        return Math.random() * (max - min) + min;
+    }
 
     function createBubble(trait, valueList) {
         const bubble = document.createElement('div');
-        bubble.classList.add('bubble');
+        bubble.className = 'bubble';
         bubble.textContent = trait;
-        bubble.addEventListener('click', () => {
+
+        let hue = randomInRange(120, 240); 
+        let saturation = randomInRange(60, 150);
+        let lightness = randomInRange(40, 100);
+        bubble.style.backgroundColor = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+
+        bubble.onclick = () => {
             createSlider(trait, valueList);
             bubble.style.display = 'none';
-        });
+        };
         bubblesContainer.appendChild(bubble);
     }
 
-    addSliderButton.addEventListener('click', function () {
-        const traitName = prompt("Enter the name for the new slidebar:");
+    function addCustomSlider() {
+        const traitName = prompt("Enter the new dial's name:");
         if (!traitName) return;
-
-        const levels = prompt("Enter the five levels separated by commas (e.g., Low, Below Average, Average, Above Average, High):");
-        const valueList = levels ? levels.split(',').map(level => level.trim()) : [];
-        if (valueList.length !== 5) {
-            alert("Please enter exactly five levels.");
-            return;
-        }
-        createSlider(traitName, valueList);
-    });
-
-    function createSlider(trait, valueList) {
-        const sliderContainer = document.createElement('div');
-        sliderContainer.classList.add('slider-container');
-        const sliderLabel = document.createElement('label');
-        sliderLabel.textContent = trait;
-        sliderContainer.appendChild(sliderLabel);
-
-        const sliderInput = document.createElement('input');
-        sliderInput.type = 'range';
-        sliderInput.min = '0';
-        sliderInput.max = '4';
-        sliderInput.value = valueList[parseInt(valueList.length - 1)];
-        sliderInput.width = '60%';
-        sliderInput.classList.add('slider');
-        sliderInput.style.display = 'inline-block';
-
-        sliderInput.addEventListener('input', function () {
-            const selectedValue = valueList[parseInt(this.value)];
-            sliderValueDisplay.textContent = selectedValue;
-            curInstruction[trait] = selectedValue;
-        });
-
-        sliderContainer.appendChild(sliderInput);
-        const sliderValueDisplay = document.createElement('span');
-        sliderValueDisplay.textContent = valueList[parseInt(sliderInput.value)];
-        sliderValueDisplay.classList.add('slider-value-display');
-        sliderContainer.appendChild(sliderValueDisplay);
-        slidersContainer.appendChild(sliderContainer);
-
-        rephraseButton.style.display = 'block';
+        const levels = prompt("Enter the dial's levels separated by commas:", "Low, Average, High");
+        if (!levels) return;
+        const valueList = levels.split(',').map(level => level.trim());
+        valueList.push(Math.ceil(valueList.length/2).toString());
+        createSlider(traitName, valueList); 
     }
 
-    rephraseButton.addEventListener('click', function () {
-        const LastRephrasing = responseDisplay.innerText;
-        responseDisplay.innerText = '';
-        const message = curDraft;
+    function createSlider(trait, valueList) {
+        const index = valueList[parseInt(valueList.length - 1)];
+        const sliderContainer = document.createElement('div');
+        sliderContainer.className = 'slider-container';
+        const label = createSliderLabel(trait);
+        const [slider, display] = createSliderWithDisplay(trait, valueList, index);
 
-        let curInstructionMsg = '';
-        for (var key in curInstruction) {
-            curInstructionMsg += curInstruction[key] + ' ' + key + ' ,';
+        const closeButton = document.createElement('button');
+        closeButton.innerHTML = '&times;';
+        closeButton.className = 'close-button';
+        closeButton.addEventListener('click', function() {
+            sliderContainer.remove();
+            const bubbles = Array.from(bubblesContainer.children);
+            const matchingBubble = bubbles.find(bubble => bubble.textContent === trait);
+            if (matchingBubble) {
+                matchingBubble.style.display = 'flex';
+            }
+            delete curDials[trait];
+        });
+        sliderContainer.append(label, slider, display, closeButton);
+        slidersContainer.appendChild(sliderContainer);
+
+        if (curMessage.length > 0) {
+            rephraseButton.style.display = 'block';
         }
-        curInstruction = {};
+        curDials[trait] = valueList[index];
+    }
 
-        fetch(url + 'rephrase_draft', {
+    function createSliderLabel(text) {
+        const label = document.createElement('label');
+        label.textContent = text;
+        return label;
+    }
+
+    function createSliderWithDisplay(trait, valueList, index) {
+        const slider = document.createElement('input');
+        slider.type = 'range';
+        slider.className = 'slider';
+        slider.min = '0';
+        slider.max = (valueList.length - 2).toString();
+        slider.value = (index).toString();
+        const display = document.createElement('span');
+        display.textContent = valueList[index];
+        display.className = 'slider-value-display';
+        slider.oninput = () => updateSliderValue(trait, valueList, slider, display);
+        return [slider, display];
+    }
+
+    function updateSliderValue(trait, valueList, slider, display) {
+        const value = valueList[slider.value];
+        display.textContent = value;
+    }
+
+    function rephraseText() {
+        const message = curMessage;
+        const {curInstructionMsg, lastRephrasing} = constructRephraseParams();
+        if (curInstructionMsg.length === 0) return;
+        fetch(`${url}rephrase_draft`, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ message: message, instruction: curInstructionMsg, last_rephrasing: LastRephrasing })
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ session_id: sessionId, message: message, instruction: curInstructionMsg, last_rephrasing: lastRephrasing })
         })
-            .then(response => streamResponse(response, responseDisplay))
-            .catch(error => {
-                console.error('Error:', error);
-            });
-    });
+        .then(response => streamResponse(response, responseDisplay))
+        .catch(console.error);
+    }
+
+    function constructRephraseParams() {
+        let curInstructionMsg = '';
+        let lastRephrasing = '';
+        const newDials = {}; 
+        slidersContainer.querySelectorAll('.slider-container').forEach(container => {
+            const trait = container.querySelector('label').textContent;
+            const value = container.querySelector('.slider-value-display').textContent;
+            
+            if (curDials[trait] !== value) {
+                curInstructionMsg += `${trait}:${value};`;
+            } else {
+                lastRephrasing += `${trait}:${value};`;
+            }
+    
+            newDials[trait] = value;
+        });
+        curDials = {...newDials};
+        if (curInstructionMsg.length == 0) {
+            curInstructionMsg = lastRephrasing;
+            lastRephrasing = '';
+        }
+        return { curInstructionMsg, lastRephrasing };
+    }
 
     function streamResponse(response, displayElement) {
         const reader = response.body.getReader();
+        displayElement.innerText = '';
+        copyButton.style.display = 'none';
         function read() {
-            reader.read().then(({ done, value }) => {
+            reader.read().then(({done, value}) => {
                 if (done) {
+                    responseDisplay.innerText = responseDisplay.innerText.replace(/^\s+|\s+$/g, '');
+
+                    copyButton.style.display = 'block'; 
                     return;
                 }
                 const chunk = new TextDecoder("utf-8").decode(value);
-                displayElement.innerText = displayElement.innerText + ' ' + chunk;
+                displayElement.innerText = displayElement.innerText +' ' +chunk;
                 read();
-            }).catch(error => {
-                console.error('Error reading response stream:', error);
             });
         }
         read();
+    }
+
+    function copyText(event) {
+        event.preventDefault();
+        navigator.clipboard.writeText(responseDisplay.innerText)
+            .then(() => {
+                copyButton.textContent = 'Copied!';
+                setTimeout(() => copyButton.textContent = 'Copy', 2000);
+            })
+            .catch(console.error);
+    }
+
+    function generateSessionId() {
+        let sessionId = localStorage.getItem('sessionId');
+        if (!sessionId) {
+            sessionId = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+            localStorage.setItem('sessionId', sessionId);
+        }
+        return sessionId;
     }
 });
