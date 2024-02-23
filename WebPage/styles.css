@@ -121,20 +121,38 @@ h4 a {
 
 /* Updated button gradients and 3D effects for vibrancy and salience */
 #analyzeButton {
-    background: linear-gradient(135deg, #FFD194, #D1913C); /* Warm, inviting gradient */
+    background: linear-gradient(135deg, #FFA500, #FF6347); /* Warm, inviting gradient */
 }
 
 #addSliderButton {
-    background: linear-gradient(135deg, #89C4F4, #6BB9F0); /* Calm, appealing blue */
+    background: linear-gradient(135deg, #FFD700, #FFA500); /* Calm, appealing blue */
 }
 
 #copyButton {
-    background: linear-gradient(135deg, #A7DBD8, #89C4F4); /* Soft, friendly cyan */
+    background: linear-gradient(135deg, #55aadd, #aad4f7); /* Soft, friendly cyan */
 }
 
 #rephraseButton {
     background: linear-gradient(135deg, #EF4836, #D64541); /* Most salient, vibrant red */
 }
+
+.close-button {
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto; /* Ensures it is pushed to the right */
+    padding: 0 10px;
+}
+
+/* Optional: Change the icon/color on hover */
+.close-button:hover {
+    color: #FF6347; /* A shade that matches the delete action */
+}
+
 
 .gradient-button {
     padding: 0.5em 1.5em;

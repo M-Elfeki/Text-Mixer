@@ -56,6 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function randomInRange(min, max) {
         return Math.random() * (max - min) + min;
     }
+
     function createBubble(trait, valueList) {
         const bubble = document.createElement('div');
         bubble.className = 'bubble';
@@ -89,12 +90,26 @@ document.addEventListener("DOMContentLoaded", function () {
         sliderContainer.className = 'slider-container';
         const label = createSliderLabel(trait);
         const [slider, display] = createSliderWithDisplay(trait, valueList, index);
-        sliderContainer.append(label, slider, display);
+
+        const closeButton = document.createElement('button');
+        closeButton.innerHTML = '&times;';
+        closeButton.className = 'close-button';
+        closeButton.addEventListener('click', function() {
+            sliderContainer.remove();
+            const bubbles = Array.from(bubblesContainer.children);
+            const matchingBubble = bubbles.find(bubble => bubble.textContent === trait);
+            if (matchingBubble) {
+                matchingBubble.style.display = 'flex';
+            }
+            delete curDials[trait];
+        });
+        sliderContainer.append(label, slider, display, closeButton);
         slidersContainer.appendChild(sliderContainer);
-        
+
         if (textInput.value.length > 0) {
             rephraseButton.style.display = 'block';
         }
+        curDials[trait] = valueList[index];
     }
 
     function createSliderLabel(text) {
@@ -114,8 +129,6 @@ document.addEventListener("DOMContentLoaded", function () {
         display.textContent = valueList[index];
         display.className = 'slider-value-display';
         slider.oninput = () => updateSliderValue(trait, valueList, slider, display);
-        
-        curDials[trait] = valueList[index];
         return [slider, display];
     }
 
@@ -154,6 +167,10 @@ document.addEventListener("DOMContentLoaded", function () {
             newDials[trait] = value;
         });
         curDials = {...newDials};
+        if (curInstructionMsg.length == 0) {
+            curInstructionMsg = lastRephrasing;
+            lastRephrasing = '';
+        }
         return { curInstructionMsg, lastRephrasing };
     }
 
