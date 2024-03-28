@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flyter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div id="question"></div>
+        <div id="options"></div>
+        <div id="answers"></div>
+        <div id="buttons">
+            <button id="back" onclick="back()">Back</button>
+            <button id="next" onclick="next()">Next</button>
+        </div>
+        <div class="loader" id="loader"></div>
+    </div>
+    <div class="container" id="results">
+        <center><h1>Results</h1></center>
+        <div id="headline"></div>
+        <div id="company"></div>
+        <div id="competition"></div>
+        <div id="largest_company"></div>
+        <div id="summary"></div>
+    </div>
+    <div class="container" id="questions" style="display: none;">
+        <h2>Ask the market</h2>
+        <input type="text" id="questionInput" class="question-input" placeholder="Enter your question...">
+        <button id="submitButton" class="submit-btn">Submit</button>
+        <div class="response-container" id="responseContainer" style="display: none;">
+            <h3>Response:</h3>
+            <p id="responseText"></p>
+            <h3>References:</h3>
+            <ul class="reference-list" id="referenceList"></ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
